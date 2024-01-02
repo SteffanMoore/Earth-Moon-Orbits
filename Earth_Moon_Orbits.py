@@ -11,7 +11,7 @@ M_M = 7.347E22
 
 
 def main():
-    model = simulation()
+    model = Simulation()
     model.path()
     model.plot()
 
@@ -57,7 +57,7 @@ def find_hypotoneuse(x, y):
     return hyp
 
 
-class massless_object:
+class MasslessObject:
     """
     The massless object class creates a object of negligible mass on astronomical scale (eg. a spaceship). This object is
     capable of calculating the current forces acting on it and finding its position after the next time iteration.
@@ -152,7 +152,7 @@ class massless_object:
         
 
     
-class massive_object(massless_object):
+class MassiveObject(MasslessObject):
     """
     Adds mass and radius to simulate a astronomically significant object
     """
@@ -163,7 +163,7 @@ class massive_object(massless_object):
         self.radius = radius
         
 
-class simulation:
+class Simulation:
     """
     Contains all objects to be simulated and 
     """
@@ -183,7 +183,7 @@ class simulation:
         
         
         # Generates the Earth
-        self.massive_object_list.append(massive_object(find_info("Earth", "start_x"), find_info("Earth", "start_y"), 0, 0, "Earth", find_info("Earth", "radius"), find_info("Earth", "mass")))
+        self.massive_object_list.append(MassiveObject(find_info("Earth", "start_x"), find_info("Earth", "start_y"), 0, 0, "Earth", find_info("Earth", "radius"), find_info("Earth", "mass")))
         bodies_generated = ["Earth"]
         
         
@@ -200,7 +200,7 @@ class simulation:
                 # Checks if the input planet already has stored characteristics throwing error if not
                 try:
                     possible_massive_objects.index(body_input)
-                    self.massive_object_list.append(massive_object(find_info(body_input, "start_x"), find_info(body_input, "start_y"), 0, 0, body_input, find_info(body_input, "radius"), find_info(body_input, "mass")))
+                    self.massive_object_list.append(MassiveObject(find_info(body_input, "start_x"), find_info(body_input, "start_y"), 0, 0, body_input, find_info(body_input, "radius"), find_info(body_input, "mass")))
                     bodies_generated.append(body_input)
                 except ValueError:
                     name_mispelled = input(f"Did you make a mistake? If not a massive body of name {body_input} will be generated. (y/n)")
@@ -211,7 +211,7 @@ class simulation:
                         new_y = input("Input new body y position:")
                         new_r = input("Input new body radius:")
                         new_m = input("Input new body mass:")
-                        self.massive_object_list.append(massive_object(new_x, new_y, 0, 0, body_input, new_r, new_m))
+                        self.massive_object_list.append(MassiveObject(new_x, new_y, 0, 0, body_input, new_r, new_m))
                     
         
 
@@ -258,7 +258,7 @@ class simulation:
             
         
         # Initialisation of the spacecraft object
-        spacecraft = massless_object(init_x, init_y, init_vel_x, init_vel_y, "spacecraft")
+        spacecraft = MasslessObject(init_x, init_y, init_vel_x, init_vel_y, "spacecraft")
         self.massless_object_list.append(spacecraft)
         
     def path(self):
