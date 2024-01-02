@@ -2,6 +2,10 @@
 ## Explanation
 Based on a university project written in my second year, this is a simulation of a spacecraft orbiting around the Earth and Moon. Using the fourth order Runge-Kutte method, a 2-D model of the Earth, Moon and spacecraft is produced to iteratively calculate forces acting on massless bodies (ie. the spacecraft) via solving the accelaration differential equations numerically. X and Y coordinates are used to find the gravitational forces acting on the massless bodies (massive bodies are currently in a fixed position in the model) before the forces are combined with cartesian velocities in "K vectors" to estimate accelerations at different points within a single iteration. These are combined and weighted to find new position and velocity values.
 
+Azimuth             |  Zenith             |  Zenith
+:-------------------------:|:-------------------------:|:-------------------------:
+<img src="/readme_pics/Low earth orbit crash.png" />  |  <img src="/readme_pics/Elliptical earth orbit.png" />  |  <img src="/readme_pics/Figure of eight moon orbit.png" />
+
 ## Future possible expansions
 - **Adaptive Runge-Kutta** - The current method uses a constant step-size for the entirety of the orbit. When forces are high (like when approching close to a massive body), a small step size is neccesary for a reliable calculation of the next iteration. Since we need this level of accuracy at some points, we must use the same small step size at all point of orbit - even when forces are low. This means that for large portions of the spacecraft orbit, more iterations are taken than neccesary for an accurate model, reducing efficiency. Implementing adaptive Runge-kutta would address this, using an adaptive step-size so that a minimum number of iterations are used.
 - **3D model** - Expanding the model into the third dimension should be relatively straightforward as most of the calculations remain similar with an added z component (although it would be harder to represet graphically).
