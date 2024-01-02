@@ -2,7 +2,7 @@
 ## Explanation
 Based on a university project written in my second year, this is a simulation of a spacecraft orbiting around the Earth and Moon. Using the fourth order Runge-Kutte method, a 2-D model of the Earth, Moon and spacecraft is produced to iteratively calculate forces acting on massless bodies (ie. the spacecraft) via solving the accelaration differential equations numerically. X and Y coordinates are used to find the gravitational forces acting on the massless bodies (massive bodies are currently in a fixed position in the model) before the forces are combined with cartesian velocities in "K vectors" to estimate accelerations at different points within a single iteration. These are combined and weighted to find new position and velocity values.
 
-Azimuth             |  Zenith             |  Zenith
+Earth collision from low Earth orbit             |  Earth orbit             |  Earth and Moon orbit
 :-------------------------:|:-------------------------:|:-------------------------:
 <img src="/readme_pics/Low earth orbit crash.png" />  |  <img src="/readme_pics/Elliptical earth orbit.png" />  |  <img src="/readme_pics/Figure of eight moon orbit.png" />
 
